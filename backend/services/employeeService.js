@@ -1,13 +1,13 @@
 import * as employeeModel from '../models/employeeModel.js';
 import ValidationError from '../utils/ValidationError.js';
 
-// READ: Fetch all employees
+//Fetch all employees
 export const fetchAllEmployees = async () => {
     const employees = await employeeModel.fetchAllEmployees();
     return employees;
 };
 
-// CHECK: Check if employee exists
+//Check if employee exists
 const doesEmployeeExist = async (employee) => {
 
     let existing;
@@ -23,7 +23,7 @@ const doesEmployeeExist = async (employee) => {
     return existing.length > 0;
 };
 
-// CREATE: Create a new employee
+//Create a new employee
 export const createEmployee = async (employee) => {
 
     if (!employee.Employee_Name) {
@@ -41,7 +41,7 @@ export const createEmployee = async (employee) => {
     return EmployeeID;
 };
 
-// UPDATE: Update an employee
+// Update an employee
 export const updateEmployee = async (employee) => {
 
     if (!employee.Employee_ID) {
@@ -63,7 +63,7 @@ export const updateEmployee = async (employee) => {
     return updatedEmployee;
 };
 
-// DELETE: Delete an employee
+// Delete an employee
 export const deleteEmployee = async (Employee_ID) => {
 
     if (!Employee_ID) {

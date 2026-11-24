@@ -19,6 +19,18 @@ const MainContainer = ({ data }) => {
 
   //Filter
 
+  const filteredData = data.filter((employees) => {
+
+  const matchesDate =
+    !date || employees.Date === date;
+
+  const matchesEmployee =
+    !employee || String(employees.Employee_ID) === employee;
+
+  return matchesDate && matchesEmployee;
+});
+
+
 
   return (
     <>
@@ -81,8 +93,8 @@ const MainContainer = ({ data }) => {
         </thead>
 
         <tbody>
-        {data.length > 0 ? (
-          data.map((employees) => (
+        {filteredData.length > 0 ? (
+          filteredData.map((employees) => (
           <tr key={employees.Employee_ID}>
             <td>{employees.Employee_ID}</td>
             <td>{employees.Employee_Name}</td>

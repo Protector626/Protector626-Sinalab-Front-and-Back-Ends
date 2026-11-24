@@ -1,6 +1,6 @@
 import * as employeeService from '../services/employeeService.js';
 
-// READ: Fetch all employees
+//Fetch all employees
 export const fetchAllEmployees = async (req, res) => {
 
     try {
@@ -17,7 +17,7 @@ export const fetchAllEmployees = async (req, res) => {
     }
 };
 
-// CREATE: Add employee
+//Add employee
 export const createEmployee = async (req, res) => {
 
     const { Employee_Name } = req.body;
@@ -44,7 +44,7 @@ export const createEmployee = async (req, res) => {
     }
 };
 
-// UPDATE: Edit employee
+//Edit employee
 export const editEmployee = async (req, res) => {
 
     const { Employee_Name } = req.body;
@@ -73,7 +73,7 @@ export const editEmployee = async (req, res) => {
     }
 };
 
-// DELETE: Remove employee
+//Remove employee
 export const deleteEmployee = async (req, res) => {
 
     const Employee_ID = Number(req.params.id);
