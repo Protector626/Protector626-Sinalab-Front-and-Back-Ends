@@ -1,7 +1,5 @@
 import './style.css';
-import Login from '../src/pages/Login';
-import QRRegistration from './components/QRRegistrationContainer';
-import MainContainer from './components/MainContainer';
+import MainSystem from './pages/MainSystems';
 
 
 
@@ -10,10 +8,8 @@ function App() {
 
   return (
     <>
+    <MainSystem/>
 
-    <Login/>
-    <MainContainer/>
-    <QRRegistration/>
 
     </>
   )

@@ -20,28 +20,38 @@ export const findEmployeeById = async (Employee_ID) => {
     return rows;
 };
 
-/*
-//insert
-export const insertEmployeeName = async (employee) =>{
+
+
+// CREATE: Insert employee
+// CREATE: Insert employee
+export const insert = async (employee) => {
     const [result] = await pool.query(
-        "INSERT INTO employee(name) VALUES (?)",
+        `INSERT INTO employee
+        (Employee_Name, TimeIn, Date)
+        VALUES (?, CURTIME(), CURDATE())`,
         [employee.Employee_Name]
     );
 
     return result.insertId;
 };
-*/
 
-
-//remove
-export const removeEmployeeID = async (Employee_ID) => {
+// UPDATE: Update employee
+export const update = async (employee) => {
     const [result] = await pool.query(
-        "DELETE FROM employee WHERE Employee_ID = ? ", 
+        "UPDATE employee SET Employee_Name = ? WHERE Employee_ID = ?",
+        [employee.Employee_Name, employee.Employee_ID]
+    );
+
+    return result.affectedRows;
+};
+
+// DELETE: Remove employee
+export const remove = async (Employee_ID) => {
+    const [result] = await pool.query(
+        "DELETE FROM employee WHERE Employee_ID = ?",
         [Employee_ID]
     );
+
     return result.affectedRows;
-
-}
-
-
+};
 

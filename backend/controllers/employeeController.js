@@ -1,68 +1,97 @@
 import * as employeeService from '../services/employeeService.js';
 
-export const fetchAllEmployees = async (request, response) => {
-    const employees = await employeeService.fetchAllEmployees();
-    response.status(200).json(employees);
-}
+// READ: Fetch all employees
+export const fetchAllEmployees = async (req, res) => {
 
+    try {
+        const employees = await employeeService.fetchAllEmployees();
 
+        res.status(200).json(employees);
 
-export const createEmployeeName = async (req, res) =>{
-    const {name} = req.body;
-    const employee = {name};
-
-// Call the bookService to insert the new book
-    try{
-        const EmployeeID = await employeeService.createEmployeeName(employee);
-        res.status(200).json({
-            success: true,
-            message: EmployeeID
-        });
-    }catch(e){
+    } catch (e) {
         console.log(e);
+
         res.status(e.statusCode).json({
             error: e.message
-        })
+        });
     }
-}
+};
 
+// CREATE: Add employee
+export const createEmployee = async (req, res) => {
 
-// Update an existing book in the database
+    const { Employee_Name } = req.body;
+
+    const employee = {
+        Employee_Name
+    };
+
+    try {
+        const EmployeeID = await employeeService.createEmployee(employee);
+
+        res.status(201).json({
+            success: true,
+            message: "Employee successfully added!",
+            Employee_ID: EmployeeID
+        });
+
+    } catch (e) {
+        console.log(e);
+
+        res.status(e.statusCode).json({
+            error: e.message
+        });
+    }
+};
+
+// UPDATE: Edit employee
 export const editEmployee = async (req, res) => {
-    const {name } = req.body;
-    const { id } = req.params;
-    const employee = {id: parseInt(id), name};
+
+    const { Employee_Name } = req.body;
+    const Employee_ID = Number(req.params.id);
+
+    const employee = {
+        Employee_ID,
+        Employee_Name
+    };
 
     try {
-        const updatedBook = await bookService.updateBook(book);
+        const updatedEmployee = await employeeService.updateEmployee(employee);
+
         res.status(200).json({
             success: true,
-            message: updatedBook
+            message: "Employee successfully updated!",
+            affectedRows: updatedEmployee
         });
+
     } catch (e) {
         console.log(e);
+
         res.status(e.statusCode).json({
             error: e.message
         });
     }
-}
+};
 
+// DELETE: Remove employee
+export const deleteEmployee = async (req, res) => {
 
-// Delete a book from the database
-export const deleteBook = async (req, res) => {
-    const { id } = req.params;
-
+    const Employee_ID = Number(req.params.id);
 
     try {
-        const deletedBook = await bookService.deleteBook(id);
+        const deletedEmployee = await employeeService.deleteEmployee(Employee_ID);
+
         res.status(200).json({
             success: true,
-            message: deletedBook
+            message: "Employee successfully deleted!",
+            affectedRows: deletedEmployee
         });
+
     } catch (e) {
         console.log(e);
+
         res.status(e.statusCode).json({
             error: e.message
         });
     }
-}
+};
