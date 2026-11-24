@@ -2,7 +2,6 @@ import { useState, useEffect} from 'react';
 import MainContainer from "../components/MainContainer";
 
 const Main = () => {
-    console.log("MAIN SYSTEM IS RUNNING");
 
     const [data, setData] = useState([]);
     
