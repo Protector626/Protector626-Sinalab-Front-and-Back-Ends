@@ -17,7 +17,7 @@ const MainContainer = ({ data }) => {
   }, []);
 
 
-
+  //Filter
 
 
   return (
@@ -87,7 +87,7 @@ const MainContainer = ({ data }) => {
             <td>{employees.Employee_ID}</td>
             <td>{employees.Employee_Name}</td>
             <td>{employees.TimeIn}</td>
-            <td>{String(employees.Date).slice(0, 10)}</td>
+            <td>{employees.Date}</td>
           </tr>))
       ) : (
           <tr>
