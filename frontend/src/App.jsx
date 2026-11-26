@@ -1,6 +1,6 @@
 import './style.css';
-import MainSystem from './pages/MainSystems';
-
+import Attendance from './pages/Attendance';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
 
 function App() {
@@ -8,8 +8,11 @@ function App() {
 
   return (
     <>
-    <MainSystem/>
-
+    <BrowserRouter>
+      <Routes>
+        <Route path='/attendance' element={<Attendance/>}/>
+      </Routes>
+    </BrowserRouter>
 
     </>
   )

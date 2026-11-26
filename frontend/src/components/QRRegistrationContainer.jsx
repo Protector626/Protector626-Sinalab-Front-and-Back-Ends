@@ -1,4 +1,4 @@
-const QRRegistrationContainer = () => {
+const QRRegistrationContainer = ({ onBack }) => {
     return (
     <>
 
@@ -33,7 +33,7 @@ const QRRegistrationContainer = () => {
         <td><button>Remove</button></td>
       </tr>
     </table>
-    <button> Return to Attendance Page</button>
+    <button onClick={onBack}> Return to Attendance Page</button>
 
     </>
     )

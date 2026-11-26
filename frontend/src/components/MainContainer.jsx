@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 
-const MainContainer = ({ data }) => {
+const MainContainer = ({ data, onLogout, onQrRegistration }) => {
 
   const [time, setTime] = useState(new Date());
   const [date, setDate] = useState("");
@@ -113,8 +113,14 @@ const MainContainer = ({ data }) => {
       {/* BUTTONS */}
       <div className="button_container">
         <button>Qr Scan</button>
-        <button>Qr Registration</button>
-        <button>Logout</button>
+
+        <button onClick={onQrRegistration}>
+        Qr Registration
+        </button>
+
+        <button onClick={onLogout}>
+        Logout
+        </button>
       </div>
 
     </>
